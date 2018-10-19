@@ -1,0 +1,7 @@
+rootProject.name = 'shopping-cart'
+include 'core'
+include 'infrastructure'
+include 'infrastructure:controllers'
+include 'infrastructure:messaging'
+include 'infrastructure:persistence'
+
