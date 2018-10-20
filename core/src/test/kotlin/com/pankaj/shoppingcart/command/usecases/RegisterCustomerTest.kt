@@ -1,50 +1,44 @@
 package com.pankaj.shoppingcart.command.usecases
 
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.argumentCaptor
-import com.nhaarman.mockitokotlin2.doAnswer
 import com.pankaj.shoppingcart.command.model.Customer
+import com.pankaj.shoppingcart.command.usecases.event.CustomerRegistered
 import com.pankaj.shoppingcart.command.usecases.publisher.EventPublisher
 import com.pankaj.shoppingcart.command.usecases.registerCustomer.CustomerInput
 import com.pankaj.shoppingcart.command.usecases.registerCustomer.RegisterCustomer
 import com.pankaj.shoppingcart.command.usecases.repositories.CreateCustomerRepository
+import io.mockk.Runs
+import io.mockk.every
+import io.mockk.just
+import io.mockk.mockk
+import io.mockk.slot
 import org.assertj.core.api.Assertions.assertThat
-import org.mockito.AdditionalAnswers
-import org.mockito.AdditionalAnswers.*
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
 import org.spekframework.spek2.Spek
-import org.spekframework.spek2.style.specification.describe
 import reactor.core.publisher.Mono
 
 
 object RegisterCustomerTest : Spek({
-    val repository = mock(CreateCustomerRepository::class.java)
-    val publisher = mock(EventPublisher::class.java)
+    val repository = mockk<CreateCustomerRepository>()
+    val publisher = mockk<EventPublisher>()
     val usecase = RegisterCustomer(repository, publisher)
 
-    group("Given a customer") {
+    group("GIVEN a customer") {
         lateinit var input: CustomerInput
 
-        beforeGroup {
-            doAnswer { Mono.just(returnsFirstArg<Customer>()) }.`when`(repository).create(any())
-        }
-
-        group("With valid details") {
+        group("WITH valid details") {
+            val customer = slot<Customer>()
 
             beforeGroup {
                 input = CustomerInput("p.p@p.com")
+
+                every { repository.create(capture(customer)) } answers { Mono.just(firstArg<Customer>()) }
+                every { publisher.publish(any<CustomerRegistered>()) } just Runs
             }
 
-            test("then customer is created") {
-                usecase.execute(input)
+            test("THEN customer is created") {
+                val customerId = usecase.execute(input).block()
 
-                argumentCaptor<Customer>().apply {
-                    verify(repository).create(capture())
-
-                    assertThat(allValues.size).isEqualTo(1)
-                    assertThat(firstValue.hasEmail(input.email)).isTrue()
-                }
+                assertThat(customer.captured.hasEmail(input.email)).isTrue()
+                assertThat(customerId).isEqualTo(customer.captured.id())
             }
         }
     }
