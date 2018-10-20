@@ -23,10 +23,15 @@ allprojects {
 
     dependencies {
         compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+        compile 'io.projectreactor:reactor-core:3.2.1.RELEASE'
 
         testImplementation ("org.spekframework.spek2:spek-dsl-jvm:2.0.0-alpha.1")
         testRuntimeOnly ('org.spekframework.spek2:spek-runner-junit5:2.0.0-alpha.1')
         testCompile 'org.assertj:assertj-core:3.11.1'
+        testCompile 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC3'
+
+        testCompile 'io.projectreactor:reactor-test:3.2.1.RELEASE'
+
     }
 
     compileKotlin {
