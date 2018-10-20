@@ -1,12 +1,11 @@
-package com.pankaj.shoppingcart.usecases
+package com.pankaj.shoppingcart.command.usecases
 
 import com.nhaarman.mockitokotlin2.argumentCaptor
-import com.pankaj.shoppingcart.model.Customer
-import com.pankaj.shoppingcart.repositories.CreateCustomerRepository
-import com.pankaj.shoppingcart.usecases.registerCustomer.CustomerInput
-import com.pankaj.shoppingcart.usecases.registerCustomer.RegisterCustomer
+import com.pankaj.shoppingcart.command.model.Customer
+import com.pankaj.shoppingcart.command.repositories.CreateCustomerRepository
+import com.pankaj.shoppingcart.command.usecases.registerCustomer.CustomerInput
+import com.pankaj.shoppingcart.command.usecases.registerCustomer.RegisterCustomer
 import org.assertj.core.api.Assertions.assertThat
-import org.mockito.Mockito.argThat
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.spekframework.spek2.Spek

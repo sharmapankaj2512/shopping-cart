@@ -1,7 +1,7 @@
-package com.pankaj.shoppingcart.usecases.registerCustomer
+package com.pankaj.shoppingcart.command.usecases.registerCustomer
 
-import com.pankaj.shoppingcart.model.CustomerId
-import com.pankaj.shoppingcart.repositories.CreateCustomerRepository
+import com.pankaj.shoppingcart.command.model.CustomerId
+import com.pankaj.shoppingcart.command.repositories.CreateCustomerRepository
 import reactor.core.publisher.Mono
 
 class RegisterCustomer(private val repository: CreateCustomerRepository) {
