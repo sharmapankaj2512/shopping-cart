@@ -2,7 +2,7 @@ package com.pankaj.shoppingcart.command.usecases
 
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.pankaj.shoppingcart.command.model.Customer
-import com.pankaj.shoppingcart.command.repositories.CreateCustomerRepository
+import com.pankaj.shoppingcart.command.usecases.repositories.CreateCustomerRepository
 import com.pankaj.shoppingcart.command.usecases.registerCustomer.CustomerInput
 import com.pankaj.shoppingcart.command.usecases.registerCustomer.RegisterCustomer
 import org.assertj.core.api.Assertions.assertThat

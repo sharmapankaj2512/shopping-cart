@@ -1,4 +1,4 @@
-package com.pankaj.shoppingcart.command.repositories
+package com.pankaj.shoppingcart.command.usecases.repositories
 
 import com.pankaj.shoppingcart.command.model.Customer
 import com.pankaj.shoppingcart.command.model.CustomerId
