@@ -8,6 +8,8 @@ class Customer(
 
     override fun id(): CustomerId = id
 
+    fun email(): String = email.text()
+
     fun hasEmail(email: String): Boolean = this.email == Email(email)
 
     override fun equals(other: Any?): Boolean {
