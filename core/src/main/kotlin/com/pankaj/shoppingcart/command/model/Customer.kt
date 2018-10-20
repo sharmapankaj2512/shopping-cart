@@ -19,8 +19,6 @@ class Customer(
     override fun hashCode(): Int {
         return id.hashCode()
     }
-
-
 }
 
 data class CustomerId(val id: String = randomUUID().toString()) : Id
