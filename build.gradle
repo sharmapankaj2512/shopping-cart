@@ -50,20 +50,24 @@ allprojects {
     }
 }
 
+subprojects {
+    ext.springBootVersion = '2.0.5.RELEASE'
+}
+
 project(':infrastructure:controllers') {
     dependencies {
-        compile project(':infrastructure:persistence')
+        compile project(':infrastructure:in-memory-command-persistence')
         compile project(':infrastructure:messaging')
     }
 }
 
 project(':infrastructure:messaging') {
     dependencies {
-        compile project(':infrastructure:persistence')
+        compile project(':infrastructure:in-memory-command-persistence')
     }
 }
 
-project(':infrastructure:persistence') {
+project(':infrastructure:in-memory-command-persistence') {
     dependencies {
         compile project(':core')
     }
