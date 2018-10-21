@@ -50,6 +50,7 @@ object RegisterCustomerTest : Spek({
         group("THAT already exists") {
             beforeGroup {
                 input = CustomerInput("p.p@p.com")
+                
                 every { customerExistsRepository.exists(Email(input.email)) } returns true
             }
 
