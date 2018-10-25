@@ -1,7 +1,6 @@
-package com.pankaj.shoppingcart.command.usecases.repositories
+package com.pankaj.shoppingcart.command.usecases.ports.repositories
 
 import com.pankaj.shoppingcart.command.model.Customer
-import com.pankaj.shoppingcart.command.model.CustomerId
 import reactor.core.publisher.Mono
 
 interface CreateCustomerRepository {

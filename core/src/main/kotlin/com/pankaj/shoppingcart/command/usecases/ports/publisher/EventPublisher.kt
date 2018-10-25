@@ -1,4 +1,4 @@
-package com.pankaj.shoppingcart.command.usecases.publisher
+package com.pankaj.shoppingcart.command.usecases.ports.publisher
 
 interface EventPublisher {
     fun <T : Any> publish(event: T)

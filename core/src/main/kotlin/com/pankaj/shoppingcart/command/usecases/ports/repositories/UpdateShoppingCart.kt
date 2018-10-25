@@ -1,4 +1,4 @@
-package com.pankaj.shoppingcart.command.usecases.repositories
+package com.pankaj.shoppingcart.command.usecases.ports.repositories
 
 import com.pankaj.shoppingcart.command.model.ShoppingCart
 import reactor.core.publisher.Mono
