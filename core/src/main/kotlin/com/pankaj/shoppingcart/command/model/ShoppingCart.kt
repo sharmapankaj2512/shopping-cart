@@ -19,4 +19,6 @@ class ShoppingCart(private val customerId: CustomerId,
         if (javaClass != other?.javaClass) return false
         return customerId == (other as ShoppingCart).customerId
     }
+
+    fun isEmpty(): Boolean = itemCount() == 0
 }
