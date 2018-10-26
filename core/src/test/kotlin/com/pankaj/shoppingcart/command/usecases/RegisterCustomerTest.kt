@@ -23,7 +23,7 @@ object RegisterCustomerTest : Spek({
     val publisher = mockk<EventPublisher>()
     val createCustomerRepository = mockk<CreateCustomerRepository>()
     val customerExistsRepository = mockk<CustomerExistsRepository>()
-    val usecase = RegisterCustomer(createCustomerRepository, customerExistsRepository, publisher)
+    val registerCustomer = RegisterCustomer(createCustomerRepository, customerExistsRepository, publisher)
 
     group("GIVEN a customer") {
         lateinit var input: CustomerInput
@@ -40,7 +40,7 @@ object RegisterCustomerTest : Spek({
             }
 
             test("THEN customer is created") {
-                StepVerifier.create(usecase.execute(input)).consumeNextWith { customerId ->
+                StepVerifier.create(registerCustomer(input)).consumeNextWith { customerId ->
                     assertThat(customer.captured.hasEmail(input.email)).isTrue()
                     assertThat(customerId).isEqualTo(customer.captured.id())
                 }
@@ -55,7 +55,7 @@ object RegisterCustomerTest : Spek({
             }
 
             test("THEN customer is not updated and error is returned") {
-                StepVerifier.create(usecase.execute(input))
+                StepVerifier.create(registerCustomer(input))
                         .expectError(IllegalArgumentException::class.java)
             }
         }

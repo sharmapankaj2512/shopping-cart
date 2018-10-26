@@ -21,7 +21,7 @@ object AddItemToShoppingCartTest : Spek({
     val findShoppingCartById = mockk<FindShoppingCartById>()
     val updateShoppingCart = mockk<UpdateShoppingCart>()
 
-    val usecase = AddItemToShoppingCart(customerExistsRepository, findShoppingCartById, updateShoppingCart)
+    val addItemToShoppingCart = AddItemToShoppingCart(customerExistsRepository, findShoppingCartById, updateShoppingCart)
 
     group("GIVEN a customer that exists") {
         val customer = Customer(Email("p.p@p.com"))
@@ -43,7 +43,7 @@ object AddItemToShoppingCartTest : Spek({
                 val input = ItemAddedInput(customer.id().id, "item-id", 1)
 
                 test("THEN cart is updated and had one item in it") {
-                    StepVerifier.create(usecase.execute(input)).consumeNextWith {
+                    StepVerifier.create(addItemToShoppingCart(input)).consumeNextWith {
                         Assertions.assertThat(cartSlot.captured.itemCount()).isEqualTo(1)
                     }
                 }

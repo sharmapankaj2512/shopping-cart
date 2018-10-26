@@ -12,7 +12,8 @@ import java.lang.IllegalArgumentException
 class AddItemToShoppingCart(private val customerExistsRepository: CustomerExistsRepository,
                             private val findShoppingCartById: FindShoppingCartById,
                             private val updateShoppingCart: UpdateShoppingCart) {
-    fun execute(input: ItemAddedInput): Mono<CustomerId> {
+
+    operator fun invoke(input: ItemAddedInput): Mono<CustomerId> {
         val customerId = CustomerId(input.customerId)
         if (!customerExistsRepository.exists(customerId))
             return Mono.error(IllegalArgumentException("Not a valid customer"))

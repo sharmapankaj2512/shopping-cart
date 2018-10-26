@@ -11,7 +11,7 @@ import java.lang.IllegalArgumentException
 class RegisterCustomer(private val createCustomerRepository: CreateCustomerRepository,
                        private val customerExistsRepository: CustomerExistsRepository,
                        private val publisher: EventPublisher) {
-    fun execute(input: CustomerInput): Mono<CustomerId> {
+    operator fun invoke(input: CustomerInput): Mono<CustomerId> {
         if (customerExistsRepository.exists(Email(input.email)))
             return Mono.error(IllegalArgumentException())
 
