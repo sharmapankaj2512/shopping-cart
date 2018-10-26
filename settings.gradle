@@ -2,6 +2,6 @@ rootProject.name = 'shopping-cart'
 include 'core'
 include 'infrastructure'
 include 'infrastructure:controllers'
-include 'infrastructure:messaging'
-include 'infrastructure:in-memory-command-persistence'
+include 'infrastructure:adapters:messaging'
+include 'infrastructure:adapters:in-memory-command-persistence'
 

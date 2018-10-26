@@ -56,18 +56,18 @@ subprojects {
 
 project(':infrastructure:controllers') {
     dependencies {
-        compile project(':infrastructure:in-memory-command-persistence')
-        compile project(':infrastructure:messaging')
+        compile project(':infrastructure:adapters:in-memory-command-persistence')
+        compile project(':infrastructure:adapters:messaging')
     }
 }
 
-project(':infrastructure:messaging') {
+project(':infrastructure:adapters:messaging') {
     dependencies {
-        compile project(':infrastructure:in-memory-command-persistence')
+        compile project(':infrastructure:adapters:in-memory-command-persistence')
     }
 }
 
-project(':infrastructure:in-memory-command-persistence') {
+project(':infrastructure:adapters:in-memory-command-persistence') {
     dependencies {
         compile project(':core')
     }
