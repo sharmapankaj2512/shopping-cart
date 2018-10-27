@@ -16,6 +16,10 @@ class ShoppingCart(private val customerId: CustomerId,
 
     fun isEmpty(): Boolean = itemCount() == 0
 
+    fun quantityOf(id: ItemId): Int = itemQuantities.getOrDefault(id, 0)
+
+    fun clear(): ShoppingCart = ShoppingCart(customerId, emptySet())
+
     override fun hashCode(): Int {
         return customerId.hashCode()
     }

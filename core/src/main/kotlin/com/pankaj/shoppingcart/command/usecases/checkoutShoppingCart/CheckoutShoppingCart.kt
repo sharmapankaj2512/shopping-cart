@@ -1,7 +1,10 @@
 package com.pankaj.shoppingcart.command.usecases.checkoutShoppingCart
 
 import com.pankaj.shoppingcart.command.model.CustomerId
+import com.pankaj.shoppingcart.command.model.Order
 import com.pankaj.shoppingcart.command.model.OrderId
+import com.pankaj.shoppingcart.command.model.OrderLineItem
+import com.pankaj.shoppingcart.command.model.ShoppingCart
 import com.pankaj.shoppingcart.command.usecases.event.ShoppingCartCheckedOut
 import com.pankaj.shoppingcart.command.usecases.ports.publisher.EventPublisher
 import com.pankaj.shoppingcart.command.usecases.ports.repositories.CreateOrderRepository
@@ -16,19 +19,19 @@ class CheckoutShoppingCart(private val findShoppingCartById: FindShoppingCartByI
                            private val createOrder: CreateOrderRepository,
                            private val eventPublisher: EventPublisher) {
     operator fun invoke(id: CustomerId): Mono<OrderId> {
-        findShoppingCartById.findById(id)
-                .map { findItemsById.find(it.itemIds()) }
-                .map { it.map { it to  } }
-
-//                .flatMap(this::createOrder)
-//                .doOnSuccess { updateShoppingCart.update(cart) }
-//                .doOnSuccess { eventPublisher.publish(ShoppingCartCheckedOut(it)) }
-//                .map { it.id }
+        return findShoppingCartById.findById(id)
+                .flatMap { createOrder(it) }
+                .doOnSuccess { createOrder.create(it.second) }
+                .doOnSuccess { updateShoppingCart.update(it.first.clear()) }
+                .doOnSuccess { eventPublisher.publish(ShoppingCartCheckedOut(it.second)) }
+                .map { it.second.id() }
     }
 
-//    private fun createOrder(cart: ShoppingCart) =
-//            if (cart.isEmpty())
-//                Mono.error(IllegalStateException("Cart is empty"))
-//            else
-//                Mono.just(Order(cart))
+    private fun createOrder(cart: ShoppingCart): Mono<Pair<ShoppingCart, Order>> {
+        return findItemsById.find(cart.itemIds())
+                .map { it to cart.quantityOf(it.id()) }
+                .map { OrderLineItem(it.first, it.second) }
+                .collectList()
+                .map { cart to Order(cart.id(), it.toSet()) }
+    }
 }
