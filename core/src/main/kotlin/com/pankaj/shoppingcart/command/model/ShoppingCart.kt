@@ -3,12 +3,16 @@ package com.pankaj.shoppingcart.command.model
 class ShoppingCart(private val customerId: CustomerId,
                    private val items: Set<ShoppingCartEntry> = emptySet()) : Aggregate<CustomerId> {
 
+    val itemQuantities = items.map { it.itemId to it.quantity }.toMap()
+
     override fun id(): CustomerId = customerId
 
     fun add(shoppingCartEntry: ShoppingCartEntry): ShoppingCart =
             ShoppingCart(customerId, items.plus(shoppingCartEntry))
 
     fun itemCount(): Int = items.count()
+
+    fun itemIds(): Set<ItemId> = itemQuantities.keys
 
     fun isEmpty(): Boolean = itemCount() == 0
 

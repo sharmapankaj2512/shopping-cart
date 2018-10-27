@@ -1,3 +1,3 @@
 package com.pankaj.shoppingcart.command.model
 
-data class ShoppingCartEntry(private val itemId: ItemId, private val quantity: Int)
+data class ShoppingCartEntry(val itemId: ItemId, val quantity: Int)
