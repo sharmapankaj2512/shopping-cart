@@ -5,6 +5,7 @@ import com.pankaj.shoppingcart.command.model.Email
 import com.pankaj.shoppingcart.command.usecases.event.CustomerRegistered
 import com.pankaj.shoppingcart.command.usecases.ports.publisher.EventPublisher
 import com.pankaj.shoppingcart.command.usecases.ports.repositories.CreateCustomerRepository
+import com.pankaj.shoppingcart.command.usecases.ports.repositories.CustomerExistsRepository
 import reactor.core.publisher.Mono
 import java.lang.IllegalArgumentException
 

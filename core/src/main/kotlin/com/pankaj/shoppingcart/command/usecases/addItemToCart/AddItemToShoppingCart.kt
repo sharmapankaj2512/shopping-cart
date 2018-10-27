@@ -3,7 +3,7 @@ package com.pankaj.shoppingcart.command.usecases.addItemToCart
 import com.pankaj.shoppingcart.command.model.CustomerId
 import com.pankaj.shoppingcart.command.model.ItemId
 import com.pankaj.shoppingcart.command.model.ShoppingCartEntry
-import com.pankaj.shoppingcart.command.usecases.registerCustomer.CustomerExistsRepository
+import com.pankaj.shoppingcart.command.usecases.ports.repositories.CustomerExistsRepository
 import com.pankaj.shoppingcart.command.usecases.ports.repositories.FindShoppingCartById
 import com.pankaj.shoppingcart.command.usecases.ports.repositories.UpdateShoppingCart
 import reactor.core.publisher.Mono

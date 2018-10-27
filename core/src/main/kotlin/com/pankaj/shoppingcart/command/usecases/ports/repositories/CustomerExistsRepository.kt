@@ -1,4 +1,4 @@
-package com.pankaj.shoppingcart.command.usecases.registerCustomer
+package com.pankaj.shoppingcart.command.usecases.ports.repositories
 
 import com.pankaj.shoppingcart.command.model.CustomerId
 import com.pankaj.shoppingcart.command.model.Email

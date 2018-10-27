@@ -4,7 +4,7 @@ import com.pankaj.shoppingcart.command.model.Customer
 import com.pankaj.shoppingcart.command.model.Email
 import com.pankaj.shoppingcart.command.usecases.event.CustomerRegistered
 import com.pankaj.shoppingcart.command.usecases.ports.publisher.EventPublisher
-import com.pankaj.shoppingcart.command.usecases.registerCustomer.CustomerExistsRepository
+import com.pankaj.shoppingcart.command.usecases.ports.repositories.CustomerExistsRepository
 import com.pankaj.shoppingcart.command.usecases.registerCustomer.CustomerInput
 import com.pankaj.shoppingcart.command.usecases.registerCustomer.RegisterCustomer
 import com.pankaj.shoppingcart.command.usecases.ports.repositories.CreateCustomerRepository

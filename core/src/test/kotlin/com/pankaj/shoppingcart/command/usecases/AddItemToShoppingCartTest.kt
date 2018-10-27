@@ -5,7 +5,7 @@ import com.pankaj.shoppingcart.command.model.Email
 import com.pankaj.shoppingcart.command.model.ShoppingCart
 import com.pankaj.shoppingcart.command.usecases.addItemToCart.AddItemToShoppingCart
 import com.pankaj.shoppingcart.command.usecases.addItemToCart.ItemAddedInput
-import com.pankaj.shoppingcart.command.usecases.registerCustomer.CustomerExistsRepository
+import com.pankaj.shoppingcart.command.usecases.ports.repositories.CustomerExistsRepository
 import com.pankaj.shoppingcart.command.usecases.ports.repositories.FindShoppingCartById
 import com.pankaj.shoppingcart.command.usecases.ports.repositories.UpdateShoppingCart
 import io.mockk.every

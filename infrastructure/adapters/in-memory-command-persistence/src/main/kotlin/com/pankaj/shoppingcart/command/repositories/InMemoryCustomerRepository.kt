@@ -3,7 +3,7 @@ package com.pankaj.shoppingcart.command.repositories
 import com.pankaj.shoppingcart.command.model.Customer
 import com.pankaj.shoppingcart.command.model.CustomerId
 import com.pankaj.shoppingcart.command.model.Email
-import com.pankaj.shoppingcart.command.usecases.registerCustomer.CustomerExistsRepository
+import com.pankaj.shoppingcart.command.usecases.ports.repositories.CustomerExistsRepository
 import com.pankaj.shoppingcart.command.usecases.ports.repositories.CreateCustomerRepository
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Mono
