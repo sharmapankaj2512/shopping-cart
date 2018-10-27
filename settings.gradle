@@ -4,4 +4,5 @@ include 'infrastructure'
 include 'infrastructure:controllers'
 include 'infrastructure:adapters:messaging'
 include 'infrastructure:adapters:in-memory-command-persistence'
+include 'infrastructure:adapters:in-memory-query-persistence'
 

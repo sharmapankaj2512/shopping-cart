@@ -64,10 +64,17 @@ project(':infrastructure:controllers') {
 project(':infrastructure:adapters:messaging') {
     dependencies {
         compile project(':infrastructure:adapters:in-memory-command-persistence')
+        compile project(':infrastructure:adapters:in-memory-query-persistence')
     }
 }
 
 project(':infrastructure:adapters:in-memory-command-persistence') {
+    dependencies {
+        compile project(':core')
+    }
+}
+
+project(':infrastructure:adapters:in-memory-query-persistence') {
     dependencies {
         compile project(':core')
     }
